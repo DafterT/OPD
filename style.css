@@ -1,47 +1,39 @@
+/* Global settings */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: Verdana, Tahoma, sans-serif;
     font-weight: bolder;
     font-size: 100%;
 }
-body {
-    background-color: rgb(41, 41, 41);
-    
-}
 
-.title__text {
-    font-size: 200%;
-    text-align: center;
-    text-overflow: hidden;
-    color: white;
-}
-
-.title__item {
-    width: 345px;
+body {    
     margin: 0;
+    padding: 0;
+    background-color: rgb(41, 41, 41);
 }
+
+/* Scroll bar settings */
+
 ::-webkit-scrollbar{
     width: 15px;
-    }
+}
     
-    ::-webkit-scrollbar-track{
+::-webkit-scrollbar-track{
     background: rgb(41, 41, 41);
-    }
-    ::-webkit-scrollbar-thumb{
+}
+
+::-webkit-scrollbar-thumb{
     background: #37B34A;
     border-radius: 8px;
     border: 3px solid rgb(41, 41, 41);
-    
-    }
-    
-    ::-webkit-scrollbar-thumb:hover{
-    background: #298537;
-    }
-p {
-    margin: 10px 0px 10px;
 }
+
+::-webkit-scrollbar-thumb:hover{
+    background: #298537;
+}
+
+/* Main menu settings */
+
 .main_menu {
     position: absolute;
     height: 100%;
@@ -51,6 +43,19 @@ p {
     align-items: center;
     flex-direction: column;
 }
+
+.title__img {
+    width: 345px;
+    margin: 0;
+}
+
+.title__text {
+    font-size: 200%;
+    text-align: center;
+    text-overflow: hidden;
+    color: white;
+}
+
 .main_menu__button {
     flex-shrink: 0;
     color: #ffffff;
@@ -65,9 +70,11 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+
 .main_menu__button:hover {
     background-color: #60c970;
 }
+
 .main_menu__panel {
     flex-shrink: 0;
     max-height: 0;
@@ -80,6 +87,10 @@ p {
     transition: 0.2s ease-out;
 }
 
+.panel_text {
+    margin: 10px 0px 10px;
+}
+
 .panel_button {
     background-color: #37B34A;
     border: none;
@@ -89,14 +100,17 @@ p {
     transition: 0.4s;
     color: white;
 }
-.btn:hover {
+
+.panel_button:hover {
     background-color: #60c970;
 }
+
 .panel_seed{
     font-style: italic;
     font-size: 200%;
     color: #37B34A;
 }
+
 .panel_input {
     height: 30px;
     width: 85%;
