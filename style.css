@@ -1,36 +1,40 @@
+/* Global settings */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: Verdana, Tahoma, sans-serif;
     font-weight: bolder;
     font-size: 100%;
 }
-body {
+
+body {    
+    margin: 0;
+    padding: 0;
     background-color: rgb(41, 41, 41);
-    
 }
+
+/* Scroll bar settings */
+
 ::-webkit-scrollbar{
     width: 15px;
-    }
+}
     
-    ::-webkit-scrollbar-track{
+::-webkit-scrollbar-track{
     background: rgb(41, 41, 41);
-    }
-    ::-webkit-scrollbar-thumb{
+}
+
+::-webkit-scrollbar-thumb{
     background: #37B34A;
     border-radius: 8px;
     border: 3px solid rgb(41, 41, 41);
-    
-    }
-    
-    ::-webkit-scrollbar-thumb:hover{
-    background: #298537;
-    }
-p {
-    margin: 10px 0px 10px;
 }
-.main-menu {
+
+::-webkit-scrollbar-thumb:hover{
+    background: #298537;
+}
+
+/* Main menu settings */
+
+.main_menu {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -39,9 +43,22 @@ p {
     align-items: center;
     flex-direction: column;
 }
-.accordion {
-    flex-shrink: 0;
+
+.title__img {
+    width: 345px;
+    margin: 0;
+}
+
+.title__text {
+    font-size: 200%;
+    text-align: center;
+    text-overflow: hidden;
     color: white;
+}
+
+.main_menu__button {
+    flex-shrink: 0;
+    color: #ffffff;
     background-color: #37B34A;
     border-radius: 3px;
     border: none;
@@ -50,11 +67,15 @@ p {
     width: 300px;
     text-align: center;
     transition: 0.4s;
+    margin-left: auto;
+    margin-right: auto;
 }
-.accordion:hover {
+
+.main_menu__button:hover {
     background-color: #60c970;
 }
-.panel {
+
+.main_menu__panel {
     flex-shrink: 0;
     max-height: 0;
     width: 300px;
@@ -65,13 +86,12 @@ p {
     overflow: hidden;
     transition: 0.2s ease-out;
 }
-.title {
-    font-size: 200%;
-    text-align: center;
-    text-overflow: hidden;
-    color: white;
+
+.panel_text {
+    margin: 10px 0px 10px;
 }
-.btn {
+
+.panel_button {
     background-color: #37B34A;
     border: none;
     border-radius: 3px;
@@ -80,16 +100,20 @@ p {
     transition: 0.4s;
     color: white;
 }
-.btn:hover {
+
+.panel_button:hover {
     background-color: #60c970;
 }
-.seed{
+
+.panel_seed{
     font-style: italic;
     font-size: 200%;
     color: #37B34A;
 }
-.input {
+
+.panel_input {
     height: 30px;
+    width: 85%;
     border: 2px solid #37B34A;
     border-radius: 3px;
     text-align: center;
