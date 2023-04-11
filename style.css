@@ -10,6 +10,18 @@ body {
     background-color: rgb(41, 41, 41);
     
 }
+
+.title__text {
+    font-size: 200%;
+    text-align: center;
+    text-overflow: hidden;
+    color: white;
+}
+
+.title__item {
+    width: 345px;
+    margin: 0;
+}
 ::-webkit-scrollbar{
     width: 15px;
     }
@@ -30,7 +42,7 @@ body {
 p {
     margin: 10px 0px 10px;
 }
-.main-menu {
+.main_menu {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -39,9 +51,9 @@ p {
     align-items: center;
     flex-direction: column;
 }
-.accordion {
+.main_menu__button {
     flex-shrink: 0;
-    color: white;
+    color: #ffffff;
     background-color: #37B34A;
     border-radius: 3px;
     border: none;
@@ -50,11 +62,13 @@ p {
     width: 300px;
     text-align: center;
     transition: 0.4s;
+    margin-left: auto;
+    margin-right: auto;
 }
-.accordion:hover {
+.main_menu__button:hover {
     background-color: #60c970;
 }
-.panel {
+.main_menu__panel {
     flex-shrink: 0;
     max-height: 0;
     width: 300px;
@@ -65,13 +79,8 @@ p {
     overflow: hidden;
     transition: 0.2s ease-out;
 }
-.title {
-    font-size: 200%;
-    text-align: center;
-    text-overflow: hidden;
-    color: white;
-}
-.btn {
+
+.panel_button {
     background-color: #37B34A;
     border: none;
     border-radius: 3px;
@@ -83,13 +92,14 @@ p {
 .btn:hover {
     background-color: #60c970;
 }
-.seed{
+.panel_seed{
     font-style: italic;
     font-size: 200%;
     color: #37B34A;
 }
-.input {
+.panel_input {
     height: 30px;
+    width: 85%;
     border: 2px solid #37B34A;
     border-radius: 3px;
     text-align: center;
