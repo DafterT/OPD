@@ -28,7 +28,7 @@ panelButtons.forEach((button) => {
     mainMenuFlexBox.classList.add('hide_animation');
     mainMenuFlexBox.addEventListener('animationend', () => {
       mainMenuFlexBox.style.display = 'none';
-      gameScreen.style.display = 'grid';
+      gameScreen.style.display = 'block';
       gameScreen.classList.add('appear_animation');
     })
   });
