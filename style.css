@@ -122,7 +122,6 @@ body {
     text-align: center;
     text-transform: uppercase;
     font-size: larger;
-
 }
 
 .hide_animation {
@@ -138,7 +137,7 @@ body {
 /* GAME_SCREEN settings */
 
 .game_screen {
-    display: none;
+    display: block;
 }
 
 .card_container {
@@ -181,7 +180,6 @@ body {
     background-color: rgb(41, 41, 41);
     color:#37B34A;
     border: none;
-
 }
 
 /* ANIMATION */
@@ -202,4 +200,10 @@ body {
     to {
         opacity: 100%;
     }
+}
+
+/* Other settings */
+
+.hidden {
+    display: none;
 }
