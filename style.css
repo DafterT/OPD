@@ -52,13 +52,10 @@ body {
     font-size: 200%;
     text-align: center;
     text-overflow: hidden;
-    color: aliceblue;
 }
 
 .main_menu__button {
     flex-shrink: 0;
-    color: aliceblue;
-    background-color: #37B34A;
     border-radius: 3px;
     border: none;
     padding: 18px;
@@ -70,17 +67,11 @@ body {
     margin-right: auto;
 }
 
-.main_menu__button:hover {
-    background-color: #60c970;
-}
-
 .main_menu__panel {
     flex-shrink: 0;
     max-height: 0;
     width: 300px;
-    background-color: aliceblue;
     border-radius: 3px;
-    color: black;
     text-align: center;
     overflow: hidden;
     transition: 0.2s ease-out;
@@ -92,33 +83,25 @@ body {
 
 .panel_button {
     width: 130px;
-    background-color: #37B34A;
     border: none;
     border-radius: 3px;
     margin: 10px 0px;
     padding: 10px 15px;
     transition: 0.4s;
-    color: aliceblue;
     text-transform: uppercase;
     font-size: smaller;
-}
-
-.panel_button:hover {
-    background-color: #60c970;
 }
 
 .panel_seed{
     font-style: italic;
     font-size: 200%;
     letter-spacing: -3px;
-    color: #37B34A;
 }
 
 .panel_input {
     height: 30px;
     width: 85%;
     border: 2px solid #37B34A;
-    background-color: aliceblue;
     border-radius: 3px;
     text-align: center;
     text-transform: uppercase;
@@ -161,8 +144,6 @@ body {
     min-width: 300px;
     max-width: 450px;
     height: 230px;
-    background-color: aliceblue;
-    color: black;
     border-radius: 4px;
     margin: 10px;
     padding: 20px;
@@ -174,8 +155,6 @@ body {
     min-width: 300px;
     max-width: 450px;
     height: 20px;
-    background-color: aliceblue;
-    color:black;
     border-radius: 4px;
     margin: 10px;
     padding: 20px;
@@ -186,7 +165,7 @@ body {
 }
 
 .card_menu:hover {
-    background-color: rgb(204, 211, 216);
+    background-color: rgb(168, 169, 170);
 }
 
 .card_header {
@@ -224,4 +203,37 @@ body {
 
 .hidden {
     display: none;
+}
+
+.main_menu_color_light {
+    background-color: #37B34A;
+}
+
+.main_menu_color_light:hover {
+    background-color: #59cc6a;
+}
+
+.main_menu_color_dark {
+    background-color: #2e8b57;
+}
+
+.main_menu_color_dark:hover {
+    background-color: #256f46;
+}
+
+.background_light {
+    background-color: aliceblue;
+    border: 0px solid #37B34A;
+}
+
+.background_dark {
+    background-color: rgb(84, 84, 84);
+}
+
+.text_light {
+    color: black;
+}
+
+.text_dark {
+    color: aliceblue;
 }
