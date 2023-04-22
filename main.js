@@ -5,11 +5,11 @@ const mainMenuFlexBox = document.querySelector('.main_menu');
 const panelButtons = document.querySelectorAll('.panel_button');
 const gameScreen = document.querySelector('.game_screen');
 const backButton = document.querySelector('.card_menu__button');
+const themeButton = document.querySelector('.dark_light_button');
 
 const toggleButton = (evt) => {
   panel = mainMenuPanels[Number(evt.target.dataset.id)];
   panel.style.maxHeight = panel.style.maxHeight ? null : `${panel.scrollHeight}px`;
-  //panel.style.border = panel.style.maxHeight ? '2px solid #37B34A' : '0px solid #37B34A' сделать только для светлой темы
 }
 
 newGameButton.addEventListener('click', toggleButton);
