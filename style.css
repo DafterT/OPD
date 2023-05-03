@@ -168,7 +168,6 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     color: var(--color);
@@ -180,10 +179,11 @@ body {
     justify-content: center;
     position: relative;
     width: 100%;
+    max-width: 1500px;
 }
 
 .card {
-    flex-basis: calc(33.33% - 10px);
+    flex-basis: calc(50% - 60px);
     flex-shrink: 0;
     min-width: 300px;
     max-width: 450px;
@@ -195,7 +195,7 @@ body {
 }
 
 .card_menu {
-    flex-basis: calc(33.33% - 10px);
+    flex-basis: calc(50% - 60px);
     flex-shrink: 0;
     min-width: 300px;
     max-width: 450px;
@@ -215,7 +215,7 @@ body {
 }
 
 .card_big {
-    flex-basis: calc(70%);
+    flex-basis: calc(100% - 60px);
     flex-shrink: 0;
     min-width: 300px;
     max-width: 960px;
@@ -224,6 +224,12 @@ body {
     margin: 10px;
     padding: 20px;
     background-color: var(--panel_color);
+}
+
+@media (max-width: 720px) {
+    .card_big {
+        max-width: 300px;
+    }
 }
 
 .splitter {

@@ -21,9 +21,7 @@ const handleResize = () => {
   mainMenuFlexBox.style.justifyContent = flexBoxHeight > screenHeight ? 'flex-start' : 'center';
 };
 
-new ResizeObserver(() => {
-  handleResize();
-}).observe(mainMenuFlexBox);
+new ResizeObserver(() => handleResize).observe(mainMenuFlexBox);
 
 const switchScreenAnimation = (from, to) => {
   return () => {
