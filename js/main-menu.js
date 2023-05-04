@@ -6,6 +6,7 @@ const mainMenuPanels = document.querySelectorAll('.main_menu__panel');
 const panelButtons = mainMenuFlexBox.querySelectorAll('.panel_button');
 const newGameButton = mainMenuFlexBox.querySelector('.new_game__button');
 const connectButton = mainMenuFlexBox.querySelector('.connect__button');
+const codeElement = mainMenuFlexBox.querySelector('.panel_seed');
 
 const toggleMainButton = (evt) => {
   const panel = mainMenuPanels[Number(evt.target.dataset.id)];
@@ -18,6 +19,10 @@ const handleResize = () => {
   mainMenuFlexBox.style.justifyContent = flexBoxHeight > screenHeight ? 'flex-start' : 'center';
 };
 
+const addCodeToMainScreen = (code) => {
+  codeElement.textContent = code;
+};
+
 const startMain = () => {
   newGameButton.addEventListener('click', toggleMainButton);
   connectButton.addEventListener('click', toggleMainButton);
@@ -28,4 +33,4 @@ const startMain = () => {
   });
 };
 
-export { startMain };
+export { startMain, addCodeToMainScreen };

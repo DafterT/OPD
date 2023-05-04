@@ -1,6 +1,6 @@
 import { data } from '../data/cards.js';
 
-const getJson = () => JSON.parse(data);
+const dataJson = JSON.parse(data);
 
 const getCountBitsObj = (dataObj) => ({
   'seller_tactic': dataObj.seller.tactic.length,
@@ -26,4 +26,4 @@ const generateCode = (dataObj) => {
   return parseInt(binaryCode, 2).toString(8).padStart(4, '0');
 };
 
-export { getJson, generateCode };
+export { dataJson, generateCode };
