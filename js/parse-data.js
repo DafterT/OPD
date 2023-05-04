@@ -52,13 +52,18 @@ const getMaxCodeDec = () => {
 
 const getObjByCode = (code) => {
   let codeDec = parseInt(code, 8);
+  const lenInDec = getCountObj();
   const lenInBits = getCountBitObj();
   const cardsNumber = {};
-  ['situation', 'national', 'buyer_tactic', 'seller_tactic'].forEach((element) => {
+  for (const element of ['situation', 'national', 'buyer_tactic', 'seller_tactic']) {
     const mask = Math.pow(2, lenInBits[element]) - 1;
     cardsNumber[element] = codeDec & mask;
+    // Проверка что число подходит
+    if (cardsNumber[element] > lenInDec[element]) {
+      return null;
+    }
     codeDec >>= lenInBits[element];
-  });
+  }
   return {
     'seller': {
       'tactic': dataJson['seller']['tactic'][cardsNumber['seller_tactic']],
