@@ -11,6 +11,13 @@ const getCountObj = () => ({
 
 const toBits = (num) => Math.ceil(Math.log2(num));
 
+const getCountBitObj = () => ({
+  'seller_tactic': toBits(dataJson.seller.tactic.length),
+  'buyer_tactic': toBits(dataJson.buyer.tactic.length),
+  'national': toBits(dataJson.buyer.national_short.length),
+  'situation': toBits(dataJson.seller.goal.length)
+});
+
 const getCodeLen = () => {
   let length = 0;
   Object.entries(getCountObj()).forEach(([, value]) => {
@@ -43,4 +50,30 @@ const getMaxCodeDec = () => {
   return parseInt(binaryCode, 2);
 };
 
-export { generateCode, getMaxCodeDec, getCodeLen };
+const getObjByCode = (code) => {
+  let codeDec = parseInt(code, 8);
+  const lenInBits = getCountBitObj();
+  const cardsNumber = {};
+  ['situation', 'national', 'buyer_tactic', 'seller_tactic'].forEach((element) => {
+    const mask = Math.pow(2, lenInBits[element]) - 1;
+    cardsNumber[element] = codeDec & mask;
+    codeDec >>= lenInBits[element];
+  });
+  return {
+    'seller': {
+      'tactic': dataJson['seller']['tactic'][cardsNumber['seller_tactic']],
+      'goal': dataJson['seller']['goal'][cardsNumber['situation']],
+      'national_all': dataJson['seller']['national_all'][cardsNumber['national']]
+    },
+    'buyer': {
+      'tactic': dataJson['buyer']['tactic'][cardsNumber['buyer_tactic']],
+      'goal': dataJson['buyer']['goal'][cardsNumber['situation']],
+      'national_short': dataJson['buyer']['national_short'][cardsNumber['national']]
+    },
+    'both': {
+      'start_situation': dataJson['both']['start_situation'][cardsNumber['situation']]
+    }
+  };
+};
+
+export { generateCode, getMaxCodeDec, getCodeLen, getObjByCode };
