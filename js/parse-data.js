@@ -59,7 +59,7 @@ const getObjByCode = (code) => {
     const mask = Math.pow(2, lenInBits[element]) - 1;
     cardsNumber[element] = codeDec & mask;
     // Проверка что число подходит
-    if (cardsNumber[element] > lenInDec[element]) {
+    if (cardsNumber[element] >= lenInDec[element]) {
       return null;
     }
     codeDec >>= lenInBits[element];
