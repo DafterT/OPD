@@ -1,7 +1,7 @@
 import { switchTheme } from './switch-theme.js';
 import { startMain } from './main-menu.js';
 import { switchScreen } from './all-screens.js';
-import { getJson, generateCode } from './parse-data.js';
+// import { getJson, generateCode } from './parse-data.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
 const gameScreen = document.querySelector('.game_screen');
@@ -12,4 +12,4 @@ themeButton.addEventListener('click', switchTheme);
 startMain();
 
 backButton.addEventListener('click', switchScreen(gameScreen, mainMenuFlexBox));
-console.log(generateCode(getJson()));
+// console.log(generateCode(getJson()));
