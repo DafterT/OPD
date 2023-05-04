@@ -43,12 +43,15 @@ const onConnectButtonClick = () => {
   switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
 };
 
+const resizeObserver = new ResizeObserver(() => { handleResize(); });
+
 const startMain = (code) => {
   addCodeToMainScreen(code);
 
   newGameButton.addEventListener('click', toggleMainButton);
   connectButton.addEventListener('click', toggleMainButton);
-  new ResizeObserver(() => handleResize).observe(mainMenuFlexBox);
+
+  resizeObserver.observe(mainMenuFlexBox);
 
   panelButtons[0].addEventListener('click', () => {
     switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
