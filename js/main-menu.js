@@ -1,4 +1,5 @@
 import { switchScreen } from './all-screens.js';
+import { addCodeToGameScreen } from './game-menu.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
 const gameScreen = document.querySelector('.game_screen');
@@ -7,6 +8,7 @@ const panelButtons = mainMenuFlexBox.querySelectorAll('.panel_button');
 const newGameButton = mainMenuFlexBox.querySelector('.new_game__button');
 const connectButton = mainMenuFlexBox.querySelector('.connect__button');
 const codeElement = mainMenuFlexBox.querySelector('.panel_seed');
+const enteredCodeElement = mainMenuFlexBox.querySelector('.panel_input');
 
 const toggleMainButton = (evt) => {
   const panel = mainMenuPanels[Number(evt.target.dataset.id)];
@@ -23,14 +25,36 @@ const addCodeToMainScreen = (code) => {
   codeElement.textContent = code;
 };
 
-const startMain = () => {
+const onSwitchScreen = () => {
+  mainMenuPanels.forEach((panel) => { panel.style.maxHeight = null; });
+  enteredCodeElement.value = '';
+};
+
+const startMain = (code) => {
+  addCodeToMainScreen(code);
+
   newGameButton.addEventListener('click', toggleMainButton);
   connectButton.addEventListener('click', toggleMainButton);
   new ResizeObserver(() => handleResize).observe(mainMenuFlexBox);
 
-  panelButtons.forEach((button) => {
-    button.addEventListener('click', switchScreen(mainMenuFlexBox, gameScreen));
+  panelButtons[0].addEventListener('click', () => {
+    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
+    addCodeToGameScreen(code);
+  });
+
+  panelButtons[1].addEventListener('click', () => {
+    const enteredCode = enteredCodeElement.value;
+    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
+    // TODO Валидация
+    addCodeToGameScreen(enteredCode);
+  });
+
+  panelButtons[2].addEventListener('click', () => {
+    const enteredCode = enteredCodeElement.value;
+    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
+    // TODO Валидация
+    addCodeToGameScreen(enteredCode);
   });
 };
 
-export { startMain, addCodeToMainScreen };
+export { startMain };
