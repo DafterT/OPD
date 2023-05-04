@@ -43,4 +43,4 @@ const getMaxCodeDec = () => {
   return parseInt(binaryCode, 2);
 };
 
-export { dataJson, generateCode, getMaxCodeDec, getCodeLen };
+export { generateCode, getMaxCodeDec, getCodeLen };

@@ -31,13 +31,18 @@ const onSwitchScreen = () => {
   enteredCodeElement.value = '';
 };
 
-const onConnectButtonClick = () => {
+const onConnectButtonClick = (evt) => {
   const enteredCode = enteredCodeElement.value;
   const enteredCodeDec = parseInt(enteredCode, 8);
   if (!enteredCodeDec ||
     enteredCode.length !== getCodeLen() ||
     enteredCodeDec > getMaxCodeDec()) {
     return;
+  }
+  if (evt.target.dataset.id === 'buyer') {
+    // TODO Заполнить ячейками покупателя
+  } else {
+    // TODO Заполнить ячейками продавца
   }
   addCodeToGameScreen(enteredCode);
   switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
@@ -54,17 +59,14 @@ const startMain = (code) => {
   resizeObserver.observe(mainMenuFlexBox);
 
   panelButtons[0].addEventListener('click', () => {
-    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
     addCodeToGameScreen(code);
+    // TODO Заполнить ячейками наблюдателя (функция из game-menu)
+    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
   });
 
-  panelButtons[1].addEventListener('click', () => {
-    onConnectButtonClick();
-  });
+  panelButtons[1].addEventListener('click', onConnectButtonClick);
 
-  panelButtons[2].addEventListener('click', () => {
-    onConnectButtonClick();
-  });
+  panelButtons[2].addEventListener('click', onConnectButtonClick);
 };
 
 export { startMain };
