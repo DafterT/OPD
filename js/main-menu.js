@@ -1,6 +1,6 @@
 import { switchScreen } from './all-screens.js';
 import { addCodeToGameScreen } from './game-menu.js';
-import { getMaxCodeDec, getCodeLen } from './parse-data.js';
+import { getMaxCodeDec, getCodeLen, getObjByCode } from './parse-data.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
 const gameScreen = document.querySelector('.game_screen');
@@ -39,6 +39,10 @@ const onConnectButtonClick = (evt) => {
     enteredCodeDec > getMaxCodeDec()) {
     return;
   }
+  const objByCode = getObjByCode(enteredCode);
+  if (!objByCode) {
+    return;
+  }
   if (evt.target.dataset.id === 'buyer') {
     // TODO Заполнить ячейками покупателя
   } else {
@@ -52,7 +56,6 @@ const resizeObserver = new ResizeObserver(() => { handleResize(); });
 
 const startMain = (code) => {
   addCodeToMainScreen(code);
-
   newGameButton.addEventListener('click', toggleMainButton);
   connectButton.addEventListener('click', toggleMainButton);
 
