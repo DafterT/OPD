@@ -18,14 +18,14 @@
     <button class="main_menu__button new_game__button" data-id="0">НОВАЯ ИГРА</button>
     <div class="main_menu__panel">
         <p class="panel_text">Код комнаты:</p>
-        <div class="panel_seed">QWWR</div>
+        <div class="panel_seed">0000</div>
         <button class="panel_button">Наблюдать</button>
     </div>
 
     <button class="main_menu__button connect__button" data-id="1">ПОДКЛЮЧИТЬСЯ</button>
     <div class="main_menu__panel">
         <p class="panel_text">Введите код комнаты:</p>
-        <input class="panel_input" type="text">
+        <input class="panel_input" type="text" maxlength="10">
         <button class="panel_button" data-id="buyer">Купить</button>
         <button class="panel_button" data-id="seller">Продать</button>
     </div>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="card_container">
-        <div class="card_menu">
+        <div class="card_menu room_id_game">
             <div class="card_menu_code">QWWR</div>
         </div>
         <div class="card_menu card_menu__button">    
@@ -66,7 +66,7 @@
         </div>
     </div>    
 </main>
-<div class="popup slide_animation">НОМЕР КОМНАТЫ СКОПИРОВАН</div>
+<div class="popup">НОМЕР КОМНАТЫ СКОПИРОВАН</div>
 <div class="theme_button"></div>
 
 <template id="card_container">
