@@ -1,5 +1,6 @@
 import { switchScreen } from './all-screens.js';
 import { addCodeToGameScreen } from './game-menu.js';
+import { getMaxCodeDec, getCodeLen } from './parse-data.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
 const gameScreen = document.querySelector('.game_screen');
@@ -30,6 +31,18 @@ const onSwitchScreen = () => {
   enteredCodeElement.value = '';
 };
 
+const onConnectButtonClick = () => {
+  const enteredCode = enteredCodeElement.value;
+  const enteredCodeDec = parseInt(enteredCode, 8);
+  if (!enteredCodeDec ||
+    enteredCode.length !== getCodeLen() ||
+    enteredCodeDec > getMaxCodeDec()) {
+    return;
+  }
+  addCodeToGameScreen(enteredCode);
+  switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
+};
+
 const startMain = (code) => {
   addCodeToMainScreen(code);
 
@@ -43,17 +56,11 @@ const startMain = (code) => {
   });
 
   panelButtons[1].addEventListener('click', () => {
-    const enteredCode = enteredCodeElement.value;
-    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
-    // TODO Валидация
-    addCodeToGameScreen(enteredCode);
+    onConnectButtonClick();
   });
 
   panelButtons[2].addEventListener('click', () => {
-    const enteredCode = enteredCodeElement.value;
-    switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
-    // TODO Валидация
-    addCodeToGameScreen(enteredCode);
+    onConnectButtonClick();
   });
 };
 
