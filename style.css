@@ -8,7 +8,7 @@
     --panel_color: rgb(230, 230, 250);
     --main_button_color: #37B34A;
     --main_hover: #59cc6a;
-    --game_button_hover: #9696ea;
+    --game_button_hover: #b9b9ff;
     --theme_button_color: #848482;
     --theme_text_color: aliceblue;
 }
@@ -226,16 +226,27 @@ body {
     background-color: var(--panel_color);
 }
 
+.splitter {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: calc(100% - 60px);
+    flex-shrink: 0;
+    min-width: 300px;
+    max-width: 960px;
+    height: 20px;
+    margin: 10px;
+    padding: 20px;
+    background-color: var(--game_button_hover);
+}
+
 @media (max-width: 720px) {
     .card_big {
         max-width: 300px;
     }
+    .splitter {
+        max-width: 300px;
+    }
 }
-
-.splitter {
-    
-}
-
 .card_header {
     font-size: larger;
     overflow: hidden;
@@ -272,6 +283,43 @@ body {
 
 .hidden {
     display: none;
+}
+
+.popup {
+    position: fixed;
+    top: -5%;
+    padding: 10px;
+    opacity: 70%;
+    border-radius: 0px 0px 4px 4px;
+    font-size: smaller;
+    color: #555553;
+    background-color: #848482;
+}
+
+.slide_animation {
+    animation: slide 0.4s ease-out forwards;
+}
+
+.enter_animation {
+    animation: enter 0.4s ease-out forwards;
+}
+
+@keyframes slide {
+    from {
+        top:-5%;
+    }
+    to {
+        top: 0%;
+    }
+}
+
+@keyframes enter {
+    from {
+        top: 0%;
+    }
+    to {
+        top: -5%;
+    }
 }
 
 .theme_button {
