@@ -347,3 +347,34 @@ body {
 .theme_button:hover {
     left: 0;
 }
+
+.messages_cookies {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background-color: white;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	color: #666;
+	padding: 15px 0;
+	font-size: 12px;
+}
+.messages_cookies-wrp {
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+}
+.messages_cookies-close {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -20px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: auto 0;
+	background: url(https://snipp.ru/img/сlose.png) 0 0 no-repeat;
+}
