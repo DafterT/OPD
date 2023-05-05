@@ -11,15 +11,16 @@ const connectButton = mainMenuFlexBox.querySelector('.connect__button');
 const codeElement = mainMenuFlexBox.querySelector('.panel_seed');
 const enteredCodeElement = mainMenuFlexBox.querySelector('.panel_input');
 
-const toggleMainButton = (evt) => {
-  const panel = mainMenuPanels[Number(evt.target.dataset.id)];
-  panel.style.maxHeight = panel.style.maxHeight ? null : `${panel.scrollHeight}px`;
-};
-
 const handleResize = () => {
   const flexBoxHeight = mainMenuFlexBox.scrollHeight;
   const screenHeight = mainMenuFlexBox.clientHeight;
   mainMenuFlexBox.style.justifyContent = flexBoxHeight > screenHeight ? 'flex-start' : 'center';
+};
+
+const toggleMainButton = (evt) => {
+  const panel = mainMenuPanels[Number(evt.target.dataset.id)];
+  panel.style.maxHeight = panel.style.maxHeight ? null : `${panel.scrollHeight}px`;
+  setTimeout(handleResize, 150);
 };
 
 const addCodeToMainScreen = (code) => {
@@ -52,7 +53,7 @@ const onConnectButtonClick = (evt) => {
   switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
 };
 
-const resizeObserver = new ResizeObserver(() => { handleResize(); });
+const resizeObserver = new ResizeObserver(handleResize);
 
 const startMain = (code) => {
   addCodeToMainScreen(code);
