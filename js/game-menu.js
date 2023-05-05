@@ -9,9 +9,17 @@ const addCodeToGameScreen = (code) => {
   codeElement.textContent = code;
 };
 
+let timerInterval = null;
+
 const startGame = () => {
   backButton.addEventListener('click', switchScreen(gameScreen, mainMenuFlexBox,
-    () => gameScreen.querySelector('.player_cards').remove()
+    () => {
+      gameScreen.querySelector('.player_cards').remove();
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
   ));
 };
 
@@ -45,11 +53,21 @@ const showSeller = (dataObj) => {
   gameScreen.prepend(sellerElement);
 };
 
-const showWatcher = (dataObj) => {
+const showWatcher = (dataObj, setTimer = 0) => {
   const watcherElement = document.querySelector('#watcher_template').content.querySelector('.watcher').cloneNode(true);
   addBuyerData(watcherElement.querySelector('.buyer'), dataObj);
   addSellerData(watcherElement.querySelector('.seller'), dataObj);
   addWatcherData(watcherElement.querySelector('.watcher'), dataObj);
+  let time = setTimer;
+  const timers = watcherElement.querySelectorAll('.splitter_time');
+  timerInterval = setInterval(() => {
+    time += 1;
+    timers.forEach((timer) => {
+      timer.textContent = `${Math.floor(time / 3600).toString().padStart(2, '0')}:${
+        Math.floor((time / 60) % 3600).toString().padStart(2, '0')}:${
+        Math.floor(time % 60).toString().padStart(2, '0')}`;
+    });
+  }, 1000);
   gameScreen.prepend(watcherElement);
 };
 
