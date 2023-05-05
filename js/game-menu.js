@@ -53,6 +53,14 @@ const showSeller = (dataObj) => {
   gameScreen.prepend(sellerElement);
 };
 
+const updateTimers = (timers) => (time) => {
+  timers.forEach((timer) => {
+    timer.textContent = `${Math.floor(time / 3600).toString().padStart(2, '0')}:${
+      Math.floor((time / 60) % 3600).toString().padStart(2, '0')}:${
+      Math.floor(time % 60).toString().padStart(2, '0')}`;
+  });
+};
+
 const showWatcher = (dataObj, setTimer = 0) => {
   const watcherElement = document.querySelector('#watcher_template').content.querySelector('.watcher').cloneNode(true);
   addBuyerData(watcherElement.querySelector('.buyer'), dataObj);
@@ -60,13 +68,11 @@ const showWatcher = (dataObj, setTimer = 0) => {
   addWatcherData(watcherElement.querySelector('.watcher'), dataObj);
   let time = setTimer;
   const timers = watcherElement.querySelectorAll('.splitter_time');
+  const timerUpdater = updateTimers(timers);
+  timerUpdater(time);
   timerInterval = setInterval(() => {
     time += 1;
-    timers.forEach((timer) => {
-      timer.textContent = `${Math.floor(time / 3600).toString().padStart(2, '0')}:${
-        Math.floor((time / 60) % 3600).toString().padStart(2, '0')}:${
-        Math.floor(time % 60).toString().padStart(2, '0')}`;
-    });
+    timerUpdater(time);
   }, 1000);
   gameScreen.prepend(watcherElement);
 };

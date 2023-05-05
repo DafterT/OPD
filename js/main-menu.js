@@ -1,6 +1,7 @@
 import { switchScreen } from './all-screens.js';
 import { addCodeToGameScreen, showBuyer, showSeller, showWatcher } from './game-menu.js';
 import { getMaxCodeDec, getCodeLen, getObjByCode } from './parse-data.js';
+import { getInfoForReconnect, setInfoForReconnect } from './cookies.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
 const gameScreen = document.querySelector('.game_screen');
@@ -10,6 +11,7 @@ const newGameButton = mainMenuFlexBox.querySelector('.new_game__button');
 const connectButton = mainMenuFlexBox.querySelector('.connect__button');
 const codeElement = mainMenuFlexBox.querySelector('.panel_seed');
 const enteredCodeElement = mainMenuFlexBox.querySelector('.panel_input');
+const reconnectButtonElement = mainMenuFlexBox.querySelector('.reconnect__button');
 
 const handleResize = () => {
   const flexBoxHeight = mainMenuFlexBox.scrollHeight;
@@ -32,24 +34,55 @@ const onSwitchScreen = () => {
   enteredCodeElement.value = '';
 };
 
-const onConnectButtonClick = (evt) => {
-  const enteredCode = enteredCodeElement.value;
-  const enteredCodeDec = parseInt(enteredCode, 8);
+const getValidObjByCode = (code) => {
+  const enteredCodeDec = parseInt(code, 8);
   if (!enteredCodeDec ||
-    enteredCode.length !== getCodeLen() ||
+    code.length !== getCodeLen() ||
     enteredCodeDec > getMaxCodeDec()) {
     return;
   }
-  const objByCode = getObjByCode(enteredCode);
+  const objByCode = getObjByCode(code);
+  return objByCode?objByCode:null;
+};
+
+const onConnectButtonClick = (evt) => {
+  const enteredCode = enteredCodeElement.value;
+  const objByCode = getValidObjByCode(enteredCode);
+  if (evt.target.dataset.id === 'buyer') {
+    showBuyer(objByCode);
+    setInfoForReconnect(enteredCode, 'b');
+  } else {
+    showSeller(objByCode);
+    setInfoForReconnect(enteredCode, 's');
+  }
+  addCodeToGameScreen(enteredCode);
+  switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
+};
+
+const connectByCookie = () => {
+  const reconnectInfo = getInfoForReconnect();
+  if (!reconnectInfo) {
+    return;
+  }
+  const newTime = Math.floor(((new Date()).getTime() - reconnectInfo.time) / 1000);
+  if (newTime < 0) {
+    return;
+  }
+  const objByCode = getValidObjByCode(reconnectInfo.code);
   if (!objByCode) {
     return;
   }
-  if (evt.target.dataset.id === 'buyer') {
-    showBuyer(objByCode);
-  } else {
-    showSeller(objByCode);
+  switch (reconnectInfo.role) {
+    case 'b':
+      showBuyer(objByCode);
+      break;
+    case 's':
+      showSeller(objByCode);
+      break;
+    default:
+      showWatcher(objByCode, newTime);
   }
-  addCodeToGameScreen(enteredCode);
+  addCodeToGameScreen(reconnectInfo.code);
   switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
 };
 
@@ -65,12 +98,15 @@ const startMain = (code) => {
   panelButtons[0].addEventListener('click', () => {
     addCodeToGameScreen(code);
     showWatcher(getObjByCode(code));
+    setInfoForReconnect(code, 'w');
     switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
   });
 
   panelButtons[1].addEventListener('click', onConnectButtonClick);
 
   panelButtons[2].addEventListener('click', onConnectButtonClick);
+
+  reconnectButtonElement.addEventListener('click', connectByCookie);
 };
 
 export { startMain };
