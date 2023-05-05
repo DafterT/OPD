@@ -3,9 +3,7 @@ const switchScreenAnimation = (from, to, cb) => () => {
   to.classList.remove('hidden');
   from.classList.remove('hide_animation');
   to.classList.add('appear_animation');
-  if (cb) {
-    cb();
-  }
+  cb();
 };
 
 const switchScreen = (from, to, cb) => () => {

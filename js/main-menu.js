@@ -1,5 +1,5 @@
 import { switchScreen } from './all-screens.js';
-import { addCodeToGameScreen } from './game-menu.js';
+import { addCodeToGameScreen, showBuyer, showSeller, showWatcher } from './game-menu.js';
 import { getMaxCodeDec, getCodeLen, getObjByCode } from './parse-data.js';
 
 const mainMenuFlexBox = document.querySelector('.main_menu');
@@ -45,9 +45,9 @@ const onConnectButtonClick = (evt) => {
     return;
   }
   if (evt.target.dataset.id === 'buyer') {
-    // TODO Заполнить ячейками покупателя
+    showBuyer(objByCode);
   } else {
-    // TODO Заполнить ячейками продавца
+    showSeller(objByCode);
   }
   addCodeToGameScreen(enteredCode);
   switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
@@ -64,7 +64,7 @@ const startMain = (code) => {
 
   panelButtons[0].addEventListener('click', () => {
     addCodeToGameScreen(code);
-    // TODO Заполнить ячейками наблюдателя (функция из game-menu)
+    showWatcher(getObjByCode(code));
     switchScreen(mainMenuFlexBox, gameScreen, onSwitchScreen)();
   });
 

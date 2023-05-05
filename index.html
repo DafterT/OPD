@@ -44,7 +44,7 @@
 <div class="theme_button"></div>
 
 <template id="seller_template">
-    <div class="card_container">
+    <div class="card_container player_cards">
         <div class="card">
             <h1 class="card_header">Ваша тактика:</h1>
             <div class="card_text tactic"></div>
@@ -61,7 +61,7 @@
 </template>
 
 <template id="buyer_template">
-    <div class="card_container">
+    <div class="card_container player_cards">
         <div class="card">
             <h1 class="card_header">Ваша тактика: <span class="tactic_name"></span></h1>
             <div class="card_text tactic"></div>
@@ -72,62 +72,64 @@
         </div>
         <div class="card_big">
             <h1 class="card_header">Национальность:</h1>
-            <div class="card_text national_all"></div>
+            <div class="card_text national_short"></div>
         </div>
     </div>
 </template>
 
 <template id="watcher_template">
-    <div class="card_container">
-        <div class="splitter">
-            <div class="splitter_text">Общее:</div>
-            <div class="splitter_time"></div>
-        </div>    
-    </div>
-    <div class="card_container">
-        <div class="card_big">
-            <h1 class="card_header">Стартовая ситуация:</h1>
-            <div class="card_text start_situation"></div>
+    <div class="watcher player_cards">
+        <div class="card_container">
+            <div class="splitter">
+                <div class="splitter_text">Общее:</div>
+                <div class="splitter_time"></div>
+            </div>    
         </div>
-    </div>
-    <div class="card_container">
-        <div class="splitter">
-            <div class="splitter_text">Продавец:</div>
-            <div class="splitter_time"></div>
-        </div>    
-    </div>
-    <div class="card_container">
-        <div class="card">
-            <h1 class="card_header">Тактика:</h1>
-            <div class="card_text tactic"></div>
+        <div class="card_container watcher">
+            <div class="card_big">
+                <h1 class="card_header">Стартовая ситуация:</h1>
+                <div class="card_text start_situation"></div>
+            </div>
         </div>
-        <div class="card">
-            <h1 class="card_header">Цель:</h1>
-            <div class="card_text goal"></div>
+        <div class="card_container">
+            <div class="splitter">
+                <div class="splitter_text">Продавец:</div>
+                <div class="splitter_time"></div>
+            </div>    
         </div>
-        <div class="card_big">
-            <h1 class="card_header">Национальность: <span class="national_name"></span></h1>
-            <div class="card_text national_all"></div>
+        <div class="card_container seller">
+            <div class="card">
+                <h1 class="card_header">Тактика:</h1>
+                <div class="card_text tactic"></div>
+            </div>
+            <div class="card">
+                <h1 class="card_header">Цель:</h1>
+                <div class="card_text goal"></div>
+            </div>
+            <div class="card_big">
+                <h1 class="card_header">Национальность: <span class="national_name"></span></h1>
+                <div class="card_text national_all"></div>
+            </div>
         </div>
-    </div>
-    <div class="card_container">
-        <div class="splitter">
-            <div class="splitter_text">Покупатель:</div>
-            <div class="splitter_time"></div>
-        </div>    
-    </div>
-    <div class="card_container">
-        <div class="card">
-            <h1 class="card_header">Тактика: <span class="tactic_name"></span></h1>
-            <div class="card_text tactic"></div>
+        <div class="card_container">
+            <div class="splitter">
+                <div class="splitter_text">Покупатель:</div>
+                <div class="splitter_time"></div>
+            </div>    
         </div>
-        <div class="card">
-            <h1 class="card_header">Цель:</h1>
-            <div class="card_text goal"></div>
-        </div>
-        <div class="card_big">
-            <h1 class="card_header">Национальность:</h1>
-            <div class="card_text national_all"></div>
+        <div class="card_container buyer">
+            <div class="card">
+                <h1 class="card_header">Тактика: <span class="tactic_name"></span></h1>
+                <div class="card_text tactic"></div>
+            </div>
+            <div class="card">
+                <h1 class="card_header">Цель:</h1>
+                <div class="card_text goal"></div>
+            </div>
+            <div class="card_big">
+                <h1 class="card_header">Национальность:</h1>
+                <div class="card_text national_short"></div>
+            </div>
         </div>
     </div>
 </template>
