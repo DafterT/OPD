@@ -42,12 +42,15 @@ const getValidObjByCode = (code) => {
     return;
   }
   const objByCode = getObjByCode(code);
-  return objByCode?objByCode:null;
+  return objByCode ? objByCode : null;
 };
 
 const onConnectButtonClick = (evt) => {
   const enteredCode = enteredCodeElement.value;
   const objByCode = getValidObjByCode(enteredCode);
+  if (!objByCode) {
+    return;
+  }
   if (evt.target.dataset.id === 'buyer') {
     showBuyer(objByCode);
     setInfoForReconnect(enteredCode, 'b');

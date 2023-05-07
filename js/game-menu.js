@@ -56,7 +56,7 @@ const showSeller = (dataObj) => {
 const updateTimers = (timers) => (time) => {
   timers.forEach((timer) => {
     timer.textContent = `${Math.floor(time / 3600).toString().padStart(2, '0')}:${
-      Math.floor((time / 60) % 3600).toString().padStart(2, '0')}:${
+      Math.floor((time / 60) % 24).toString().padStart(2, '0')}:${
       Math.floor(time % 60).toString().padStart(2, '0')}`;
   });
 };

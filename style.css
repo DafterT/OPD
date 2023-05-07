@@ -244,7 +244,7 @@ body {
     background-color: var(--game_button_hover);
 }
 
-@media (max-width: 719px) {
+@media (max-width: 729px) {
     .card_big {
         max-width: 300px;
     }
@@ -369,11 +369,14 @@ body {
 	padding: 15px 0;
 	font-size: 12px;
 }
+
 .messages_cookies-wrp {
 	position: relative;
 	width: 80%;
 	margin: 0 auto;
+    text-align: center;
 }
+
 .messages_cookies-close {
 	position: absolute;
 	top: 0;
@@ -384,16 +387,4 @@ body {
 	height: 16px;
 	margin: auto 0;
 	background: url(https://snipp.ru/img/сlose.png) 0 0 no-repeat;
-}
-
-/*Input for Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
 }
