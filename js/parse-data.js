@@ -1,6 +1,23 @@
-import { data } from '../data/cards.js';
+let dataJson = null;
 
-const dataJson = JSON.parse(data);
+const getData = (onSuccess, onError) =>
+  fetch('https://getthecontact.space//posts/data.json', {
+    method: 'GET',
+    credentials: 'same-origin',
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+    })
+    .then((data) => {
+      dataJson = data;
+      onSuccess();
+    })
+    .catch((err) => {
+      onError(err);
+    });
 
 const getCountObj = () => ({
   'seller_tactic': dataJson.seller.tactic.length,
@@ -81,4 +98,4 @@ const getObjByCode = (code) => {
   };
 };
 
-export { generateCode, getMaxCodeDec, getCodeLen, getObjByCode };
+export { generateCode, getMaxCodeDec, getCodeLen, getObjByCode, getData };
