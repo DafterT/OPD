@@ -388,3 +388,14 @@ body {
 	margin: auto 0;
 	background: url(https://snipp.ru/img/сlose.png) 0 0 no-repeat;
 }
+
+.error_connect {
+    color: white;
+    background-color: red;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    font-size: 18px;
+}
