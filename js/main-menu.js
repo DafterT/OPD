@@ -1,3 +1,8 @@
+/* 
+Copyright 2023 Солодовник Игорь Николаевич, Симоновский Даниил Леонидович, Козырев Даниил Владимирович, Ануфриева Виктория Дмитриевна
+Licensed under the Apache License, Version 2.0 
+*/
+
 import { switchScreen } from './all-screens.js';
 import { addCodeToGameScreen, showBuyer, showSeller, showWatcher } from './game-menu.js';
 import { getMaxCodeDec, getCodeLen, getObjByCode } from './parse-data.js';
