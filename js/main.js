@@ -1,3 +1,8 @@
+/* 
+Copyright 2023 Солодовник Игорь Николаевич, Симоновский Даниил Леонидович, Козырев Даниил Владимирович, Ануфриева Виктория Дмитриевна
+Licensed under the Apache License, Version 2.0 
+*/
+
 import { switchTheme, setThemeFromCookie } from './switch-theme.js';
 import { startMain } from './main-menu.js';
 import { generateCode, getData } from './parse-data.js';
